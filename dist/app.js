@@ -5,6 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const config_1 = __importDefault(require("./config"));
+const modules_1 = require("./db/modules");
+const router_1 = __importDefault(require("./router"));
 const app = express_1.default();
 // allow custom header and CORS
 app.all('*', (req, res, next) => {
@@ -21,12 +24,15 @@ app.all('*', (req, res, next) => {
 });
 app.use(body_parser_1.default.urlencoded({ limit: '20mb', extended: true }));
 app.use(body_parser_1.default.json({ limit: '20mb' }));
+modules_1.connectMongo();
+// routes
+app.use('/', router_1.default);
 // error handler
 app.use(function (req, res) {
     return res.status(500).send({});
 });
-app.listen('8080', function () {
-    console.log(`the server is start at port 8080`);
+app.listen(config_1.default.systemConfig.port, function () {
+    console.log(`the server is start at port ${config_1.default.systemConfig.port}`);
 });
 exports.default = app;
 //# sourceMappingURL=app.js.map

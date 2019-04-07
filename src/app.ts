@@ -1,6 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
+import config from './config';
+import { connectMongo } from './db/modules';
+import router from './router';
+
 const app = express();
 
 // allow custom header and CORS
@@ -18,14 +22,18 @@ app.all('*', (req, res, next) => {
 
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: true }));
 app.use(bodyParser.json({ limit: '20mb' }));
+connectMongo();
+
+// routes
+app.use('/', router);
 
 // error handler
 app.use(function(req, res) {
   return res.status(500).send({});
 });
 
-app.listen('8080', function() {
-  console.log(`the server is start at port 8080`);
+app.listen(config.systemConfig.port, function() {
+  console.log(`the server is start at port ${config.systemConfig.port}`);
 });
 
 export default app;
