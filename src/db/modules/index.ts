@@ -3,10 +3,25 @@ import config from '../../config';
 
 import UserInfoModel from './userInfoModel';
 
+/* 初始化数据库连接 */
 function connectMongo() {
   mongoose.Promise = global.Promise;
-  console.log(config.systemConfig.dbUrl, '123');
-  mongoose.connection.openUri(config.systemConfig.dbUrl);
+  try {
+    mongoose.connect(config.systemConfig.dbUrl, {
+      useCreateIndex: true,
+      useNewUrlParser: true
+    });
+  } catch (error) {
+    console.log(`连接数据库失败, ${error.message}`);
+  }
+
+  mongoose.connection
+    .once('open', function() {
+      console.log('数据库连接成功');
+    })
+    .on('error', function(err) {
+      throw err;
+    });
 }
 
 export { UserInfoModel, connectMongo };

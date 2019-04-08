@@ -10,7 +10,7 @@ exports.UserInfoModel = userInfoModel_1.default;
 function connectMongo() {
     mongoose_1.default.Promise = global.Promise;
     console.log(config_1.default.systemConfig.dbUrl, '123');
-    mongoose_1.default.connection.openUri(config_1.default.systemConfig.dbUrl);
+    mongoose_1.default.connect(config_1.default.systemConfig.dbUrl);
 }
 exports.connectMongo = connectMongo;
 //# sourceMappingURL=index.js.map

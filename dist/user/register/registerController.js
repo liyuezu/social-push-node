@@ -28,6 +28,7 @@ function register(req, res) {
             }
         }
         catch (err) {
+            console.log(err.message);
             return res.status(200).send(errorCode_1.default.SystemError);
         }
     });

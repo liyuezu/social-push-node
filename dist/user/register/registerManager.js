@@ -20,14 +20,15 @@ function register(reqBody) {
             let user = yield dal_1.userInfoDal.findUserByUserName(reqBody.userName);
             if (!user) {
                 user = yield dal_1.userInfoDal.addUser(reqBody);
+                result = errorCode_1.default.Success;
                 result.data = { userId: user.userId };
-                return result;
             }
         }
         catch (err) {
             console.log('注册时发生错误', err.message);
             return errorCode_1.default.SystemError;
         }
+        return result;
     });
 }
 exports.default = register;

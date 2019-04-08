@@ -32,7 +32,7 @@ const typesUtil = {
     }
 };
 const typeList = {
-    register: ['userName', 'passWord']
+    register: ['userName', 'password']
 };
 /* 统一参数判空方法 */
 function validateParams(reqParams, type) {
@@ -46,6 +46,7 @@ function validateParams(reqParams, type) {
             }
         }
     }
+    return errorCode_1.default.Success;
 }
 exports.default = { validateParams, typesUtil };
 //# sourceMappingURL=validateUtils.js.map
