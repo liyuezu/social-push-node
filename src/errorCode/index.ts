@@ -9,6 +9,7 @@ interface IErrorCode {
   TokenFailed: IErrorCodeItem;
   TokenExpired: IErrorCodeItem;
   UserNameRepeat: IErrorCodeItem;
+  loginFaild: IErrorCodeItem;
 }
 
 const errorCode: IErrorCode = {
@@ -19,7 +20,8 @@ const errorCode: IErrorCode = {
   CreateUserError: { resultCode: '0004', description: '创建用户失败' },
   TokenFailed: { resultCode: '0005', description: 'Token错误' },
   TokenExpired: { resultCode: '0006', description: 'Token过期' },
-  UserNameRepeat: { resultCode: '0007', description: '用户名重复' }
+  UserNameRepeat: { resultCode: '0007', description: '用户名重复' },
+  loginFaild: { resultCode: '0008', description: '用户名或密码错误' }
 };
 
 export default errorCode;

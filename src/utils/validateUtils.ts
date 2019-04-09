@@ -40,7 +40,8 @@ const typesUtil: ITypesUtil = {
 };
 
 const typeList = {
-  register: ['userName', 'password']
+  register: ['userName', 'password'],
+  login: ['userName', 'password']
 };
 
 /* 统一参数判空方法 */
