@@ -9,12 +9,15 @@ const app = express();
 
 // allow custom header and CORS
 app.all('*', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Channel-No');
+  res.header('Access-Control-Allow-Origin', '192.168.4.193');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, X-Requested-With, Channel-No'
+  );
   res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Credentials', 'true'); // 可以带cookies
   if (req.method === 'OPTIONS') {
-    res.send(200);
+    res.sendStatus(200);
   } else {
     next();
   }
@@ -28,7 +31,8 @@ connectMongo();
 app.use('/', router);
 
 // error handler
-app.use(function(req, res) {
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
   return res.status(500).send({});
 });
 
