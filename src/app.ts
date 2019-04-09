@@ -17,7 +17,7 @@ app.all('*', (req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Credentials', 'true'); // 可以带cookies
   if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
+    res.sendStatus(204);
   } else {
     next();
   }
@@ -33,7 +33,7 @@ app.use('/', router);
 // error handler
 app.use(function(err, req, res, next) {
   console.error(err.message);
-  return res.sendStatus(500).send({});
+  return res.sendStatus(500);
 });
 
 app.listen(config.systemConfig.port, function() {

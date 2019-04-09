@@ -4,7 +4,7 @@ import { timeUtils, tools } from '../../utils';
 
 /** 用户信息表 */
 const UserInfoSchema = new Schema({
-  userId: { type: String, default: tools.getUUID() }, // 用户的ID，唯一标识
+  userId: { type: String, default: tools.getUUID }, // 用户的ID，唯一标识
   userName: { type: String }, // 用户名
   password: { type: String }, // 密码
   isActive: { type: Boolean, default: true }, // 当前用户是否可用
