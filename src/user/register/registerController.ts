@@ -9,7 +9,7 @@ async function register(req: Request, res: Response) {
   try {
     let result = validateUtils.validateParams(req.body, 'register');
     if (result.resultCode === errorCodes.Success.resultCode) {
-      result = await registerManager(req.body);
+      result = await registerManager.register(req.body);
       return res.status(200).send(result);
     } else {
       return res.status(200).send(result);

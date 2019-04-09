@@ -19,4 +19,4 @@ async function register(reqBody: any): Promise<IResponse> {
   return result;
 }
 
-export default register;
+export default { register };
