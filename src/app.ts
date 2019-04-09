@@ -9,7 +9,7 @@ const app = express();
 
 // allow custom header and CORS
 app.all('*', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '192.168.4.193');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header(
     'Access-Control-Allow-Headers',
     'Content-Type, Authorization, X-Requested-With, Channel-No'
@@ -32,8 +32,8 @@ app.use('/', router);
 
 // error handler
 app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  return res.status(500).send({});
+  console.error(err.message);
+  return res.sendStatus(500).send({});
 });
 
 app.listen(config.systemConfig.port, function() {
