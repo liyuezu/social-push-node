@@ -3,6 +3,7 @@ import { validateUtils } from '../../utils';
 import errorCodes from '../../errorCode';
 import registerManager from './registerManager';
 
+/** 注册 */
 async function register(req: Request, res: Response) {
   console.log(`接受到参数：${JSON.stringify(req.body)}`);
   try {

@@ -4,6 +4,7 @@ interface ITools {
   getUUID: () => string;
 }
 
+/* 统一工具类 */
 const tools: ITools = {
   getUUID() {
     let uuid = uuidv1();

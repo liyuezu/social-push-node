@@ -2,6 +2,7 @@ import errorCodes from '../../errorCode';
 import { userInfoDal } from '../../db/dal';
 import { IResponse, UserInfoModel } from '../../types';
 
+/** 注册 */
 async function register(reqBody: any): Promise<IResponse> {
   let result: IResponse = errorCodes.UserNameRepeat;
   try {
