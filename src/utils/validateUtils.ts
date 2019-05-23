@@ -50,7 +50,7 @@ function validateParams(reqParams: any, type: string) {
     return errorCodes.ParameterError;
   }
   if (typesUtil.isArray(typeList[type])) {
-    for (let item of typeList[type]) {
+    for (const item of typeList[type]) {
       if (typesUtil.isNull(reqParams[item]) || typesUtil.isUndefined(reqParams[item])) {
         return errorCodes.ParameterError;
       }

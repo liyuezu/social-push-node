@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import errorCodes from "../../errorCode";
-import tokenManager from "./tokenManager";
+import { Request, Response } from 'express';
+import errorCodes from '../../errorCode';
+import tokenManager from './tokenManager';
 
 async function verifyToken(req: Request, res: Response, next) {
   let result = errorCodes.TokenError;
@@ -16,3 +16,5 @@ async function verifyToken(req: Request, res: Response, next) {
   }
   return res.status(200).send(result);
 }
+
+export default { verifyToken };
