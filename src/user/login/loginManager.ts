@@ -17,7 +17,8 @@ async function login(reqBody: IReqBody): Promise<IResponse> {
         result = errorCodes.Success;
         result.data = {
           userId: userInfo.userId,
-          token: tools.generateToken(userInfo.userId)
+          token: tools.generateToken(userInfo.userId),
+          isCompleteFirstUserInfo: userInfo.isCompleteFirstUserInfo
         };
       } else {
         result = errorCodes.loginFaild;

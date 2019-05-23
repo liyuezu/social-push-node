@@ -29,7 +29,10 @@ const updateUserInfo = async (userId: string, params: IUpdateUserInfo) => {
   const query = UserInfoModel.findOneAndUpdate(
     userId,
     {
-      $set: params
+      $set: {
+        ...params,
+        isCompleteFirstUserInfo: true
+      }
     },
     {
       new: true

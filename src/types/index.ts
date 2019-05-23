@@ -16,6 +16,11 @@ type UserInfoModel = mongoose.Document & {
   isActive?: boolean;
   createdTime?: string;
   updatedTime?: string;
+  isCompleteFirstUserInfo?: boolean;
+  userNickName?: string;
+  avatar?: string;
+  introduction?: string;
+  area?: string;
 };
 
 type IUpdateUserInfo = {
