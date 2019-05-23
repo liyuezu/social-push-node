@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import config from '../../config';
 
 import UserInfoModel from './userInfoModel';
+import TopicModel from './topicModel';
 
 /* 初始化数据库连接 */
 function connectMongo() {
@@ -24,4 +25,4 @@ function connectMongo() {
     });
 }
 
-export { UserInfoModel, connectMongo };
+export { UserInfoModel, TopicModel, connectMongo };
