@@ -1,4 +1,5 @@
 import { UserInfoModel } from '../modules';
+import { IUpdateUserInfo } from '../../types';
 
 interface IUser {
   userName: string;
@@ -23,4 +24,18 @@ async function findUserByUserId(userId: string) {
   return query.exec();
 }
 
-export default { addUser, findUserByUserName, findUserByUserId };
+/** 根据用户id更新用户信息 */
+const updateUserInfo = async (userId: string, params: IUpdateUserInfo) => {
+  const query = UserInfoModel.findOneAndUpdate(
+    userId,
+    {
+      $set: params
+    },
+    {
+      new: true
+    }
+  );
+  return query.exec();
+};
+
+export default { addUser, findUserByUserName, findUserByUserId, updateUserInfo };

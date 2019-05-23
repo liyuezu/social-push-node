@@ -18,4 +18,11 @@ type UserInfoModel = mongoose.Document & {
   updatedTime?: string;
 };
 
-export { IResponse, IErrorCodeItem, UserInfoModel };
+type IUpdateUserInfo = {
+  userNickName?: string;
+  avatar?: string;
+  introduction?: string;
+  area?: string;
+};
+
+export { IResponse, IErrorCodeItem, UserInfoModel, IUpdateUserInfo };
