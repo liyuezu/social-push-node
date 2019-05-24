@@ -4,6 +4,8 @@ import config from '../../config';
 import UserInfoModel from './userInfoModel';
 import TopicModel from './topicModel';
 
+mongoose.set('useFindAndModify', false);
+
 /* 初始化数据库连接 */
 function connectMongo() {
   mongoose.Promise = global.Promise;
