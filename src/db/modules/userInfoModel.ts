@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 import { timeUtils, tools } from '../../utils';
 
+mongoose.set('useFindAndModify', false);
+
 /** 用户信息表 */
 const UserInfoSchema = new Schema({
   userId: { type: String, required: true, default: tools.getUUID }, // 用户的ID，唯一标识

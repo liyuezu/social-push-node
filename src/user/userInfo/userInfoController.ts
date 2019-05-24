@@ -9,6 +9,7 @@ const updateUserInfo = async (req: Request, res: Response) => {
   } catch (err) {
     console.log(err.message);
   }
+  console.log(result, 'result');
   return res.status(200).send(result);
 };
 

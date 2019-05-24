@@ -26,19 +26,12 @@ async function findUserByUserId(userId: string) {
 
 /** 根据用户id更新用户信息 */
 const updateUserInfo = async (userId: string, params: IUpdateUserInfo) => {
-  const query = UserInfoModel.findOneAndUpdate(
-    userId,
-    {
-      $set: {
-        ...params,
-        isCompleteFirstUserInfo: true
-      }
-    },
-    {
-      new: true
-    }
-  );
-  return query.exec();
+  const query = { userId };
+  const updated = {
+    ...params,
+    isCompleteFirstUserInfo: true
+  };
+  return UserInfoModel.findOneAndUpdate(query, updated, { new: true });
 };
 
 export default { addUser, findUserByUserName, findUserByUserId, updateUserInfo };

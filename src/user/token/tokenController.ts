@@ -7,6 +7,7 @@ async function verifyToken(req: Request, res: Response, next) {
   try {
     if (req.headers && req.headers.token) {
       result = tokenManager.verifyToken(<string>req.headers.token);
+      console.log(result, 'result');
       if (result.resultCode === errorCodes.Success.resultCode) {
         next();
       }
@@ -14,7 +15,9 @@ async function verifyToken(req: Request, res: Response, next) {
   } catch (err) {
     console.log(err);
   }
-  return res.status(200).send(result);
+  if (result.resultCode !== errorCodes.Success.resultCode) {
+    return res.status(200).send(result);
+  }
 }
 
 export default { verifyToken };
